@@ -1,7 +1,7 @@
 # Blunted2
 Multithreaded game engine, deprecated
 
-The main reason for this upload is because it is used by Gameplay Football, which you will find among my repositories. (working on that, ASAP!)
+The main reason for this upload is because it is used by Gameplay Football, which you will find here https://github.com/BazkieBumpercar/GameplayFootball
 
 Written by Bastiaan Konings Schuiling 2008 - 2014.
 

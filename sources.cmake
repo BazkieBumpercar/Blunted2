@@ -4,11 +4,17 @@ set(BASE_HEADERS
    src/base/utils.hpp
    src/base/properties.hpp
    src/base/sdl_surface.hpp
+)
+
+set(BASE_GEOMETRY_HEADERS
    src/base/geometry/aabb.hpp
    src/base/geometry/trianglemeshutils.hpp
    src/base/geometry/plane.hpp
    src/base/geometry/triangle.hpp
    src/base/geometry/line.hpp
+)
+
+set(BASE_MATH_HEADERS
    src/base/math/quaternion.hpp
    src/base/math/matrix3.hpp
    src/base/math/matrix4.hpp
@@ -47,18 +53,27 @@ set(SYSTEMS_COMMON_SOURCES
 
 set(SYSTEMS_GRAPHICS_HEADERS
    src/systems/graphics/graphics_task.hpp
+   src/systems/graphics/graphics_scene.hpp
+   src/systems/graphics/graphics_object.hpp
+   src/systems/graphics/graphics_system.hpp
+)
+
+set(SYSTEMS_GRAPHICS_OBJECTS_HEADERS
    src/systems/graphics/objects/graphics_overlay2d.hpp
    src/systems/graphics/objects/graphics_camera.hpp
    src/systems/graphics/objects/graphics_light.hpp
    src/systems/graphics/objects/graphics_geometry.hpp
-   src/systems/graphics/graphics_scene.hpp
-   src/systems/graphics/graphics_object.hpp
+)
+
+set(SYSTEMS_GRAPHICS_RESOURCES_HEADERS
    src/systems/graphics/resources/vertexbuffer.hpp
    src/systems/graphics/resources/texture.hpp
+)
+
+set(SYSTEMS_GRAPHICS_RENDERING_HEADERS
    src/systems/graphics/rendering/interface_renderer3d.hpp
    src/systems/graphics/rendering/opengl_renderer3d.hpp
    src/systems/graphics/rendering/r3d_messages.hpp
-   src/systems/graphics/graphics_system.hpp
 )
 
 set(SYSTEMS_GRAPHICS_SOURCES
@@ -99,16 +114,25 @@ set(SYSTEMS_PHYSICS_SOURCES
    src/systems/physics/resources/vertexbuffer.cpp
 )
 
-set(SYSTEMS_AUDIO_HEADERS
+set(SYSTEMS_AUDIO_OBJECTS_HEADERS
    src/systems/audio/objects/audio_sound.hpp
    src/systems/audio/objects/audio_audioreceiver.hpp
+)
+
+set(SYSTEMS_AUDIO_HEADERS
    src/systems/audio/audio_object.hpp
-   src/systems/audio/resources/audio_soundbuffer.hpp
    src/systems/audio/audio_scene.hpp
+   src/systems/audio/audio_system.hpp
+)
+
+set(SYSTEMS_AUDIO_RESOURCES_HEADERS
+   src/systems/audio/resources/audio_soundbuffer.hpp
+)
+
+set(SYSTEMS_AUDIO_RENDERING_HEADERS
    src/systems/audio/rendering/openal_renderer.hpp
    src/systems/audio/rendering/interface_audiorenderer.hpp
    src/systems/audio/rendering/audio_messages.hpp
-   src/systems/audio/audio_system.hpp
 )
 
 set(SYSTEMS_AUDIO_SOURCES
@@ -175,9 +199,16 @@ set(FRAMEWORK_SOURCES
 
 set(SCENE_HEADERS
    src/scene/scene.hpp
-   src/scene/scene2d/scene2d.hpp
+   src/scene/iscene.hpp
    src/scene/object.hpp
    src/scene/objectfactory.hpp
+)
+
+set(SCENE2D_HEADERS
+   src/scene/scene2d/scene2d.hpp
+)
+
+set(SCENE_OBJECTS_HEADERS
    src/scene/objects/skybox.hpp
    src/scene/objects/geometry.hpp
    src/scene/objects/light.hpp
@@ -186,9 +217,14 @@ set(SCENE_HEADERS
    src/scene/objects/joint.hpp
    src/scene/objects/image2d.hpp
    src/scene/objects/camera.hpp
+)
+
+set(SCENE3D_HEADERS
    src/scene/scene3d/scene3d.hpp
    src/scene/scene3d/node.hpp
-   src/scene/iscene.hpp
+)
+
+set(SCENE_RESOURCES_HEADERS
    src/scene/resources/geometrydata.hpp
    src/scene/resources/soundbuffer.hpp
    src/scene/resources/surface.hpp
@@ -242,10 +278,13 @@ set(UTILS_HEADERS
    src/utils/orbitcamera.hpp
    src/utils/text2d.hpp
    src/utils/directoryparser.hpp
-   src/utils/animationextensions/animationextension.hpp
-   src/utils/animationextensions/footballanimationextension.hpp
    src/utils/threadhud.hpp
    src/utils/console.hpp
+)
+
+set(UTILS_EXT_HEADERS
+   src/utils/animationextensions/animationextension.hpp
+   src/utils/animationextensions/footballanimationextension.hpp
 )
 
 set(UTILS_SOURCES
@@ -264,6 +303,14 @@ set(UTILS_SOURCES
 
 set(UTILS_GUI2_HEADERS
    src/utils/gui2/events.hpp
+   src/utils/gui2/windowmanager.hpp
+   src/utils/gui2/page.hpp
+   src/utils/gui2/style.hpp
+   src/utils/gui2/guitask.hpp
+   src/utils/gui2/view.hpp
+)
+
+set(UTILS_GUI2_WIDGETS_HEADERS
    src/utils/gui2/widgets/slider.hpp
    src/utils/gui2/widgets/image.hpp
    src/utils/gui2/widgets/dialog.hpp
@@ -280,11 +327,6 @@ set(UTILS_GUI2_HEADERS
    src/utils/gui2/widgets/menu.hpp
    src/utils/gui2/widgets/root.hpp
    src/utils/gui2/widgets/button.hpp
-   src/utils/gui2/windowmanager.hpp
-   src/utils/gui2/page.hpp
-   src/utils/gui2/style.hpp
-   src/utils/gui2/guitask.hpp
-   src/utils/gui2/view.hpp
 )
 
 set(UTILS_GUI2_SOURCES
@@ -321,22 +363,28 @@ set(CORE_SOURCES
    src/blunted.cpp
 )
 
-set(ALL_HEADERS ${BASE_HEADERS} ${SYSTEMS_COMMON_HEADERS}
-   ${SYSTEMS_GRAPHICS_HEADERS} ${SYSTEMS_AUDIO_HEADERS} ${LOADERS_HEADERS}
-   ${TYPES_HEADERS} ${FRAMEWORK_HEADERS} ${SCENE_HEADERS} ${MANAGERS_HEADERS}
-   ${UTILS_HEADERS} ${UTILS_GUI2_HEADERS} ${CORE_HEADERS}
-)
-
-set(LIBS_HEADERS
+set(LIBS_FASTEVENTS_HEADERS
    src/libs/fastevents/SDLUtils.h
    src/libs/fastevents/trace.h
    src/libs/fastevents/fastevents.h
    src/libs/fastevents/queue.h
+)
+
+set(LIBS_SQLITE3_HEADERS
    src/libs/sqlite3/sqlite3ext.h
    src/libs/sqlite3/sqlite3.h
+)
+
+set(LIBS_HEADERS
    src/libs/fastapprox.h
+)
+
+set(LIBS_GLEE_HEADERS
    src/libs/glee/GLee.h
 )
+
+set(ALL_LIBS_HEADERS ${LIBS_HEADERS} ${LIBS_FASTEVENTS_HEADERS} 
+   ${LIBS_SQLITE3_HEADERS} ${LIBS_GLEE_HEADERS})
 
 set(LIBS_SOURCES
    src/libs/fastevents/fastevents.c
